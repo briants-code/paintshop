@@ -1,0 +1,111 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 60px;
+    background-color: #F2F2F2; /* Light Grey */
+}
+
+header.header {
+    background-color: #0A1F44; /* Dark Navy */
+    color: #F2F2F2;
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.select-picker {
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Layout Components */
+.content-wrapper {
+    width: 80%;
+    margin: 40px auto;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.section-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.section-left, .section-middle {
+    flex: 1;
+    min-width: 0;
+    max-width: calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Standardized Card Layout for Canvas */
+.standard-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Canvas Specific Styling */
+#blendCanvas {
+    border: 1px solid #D9F1F1; /* Light Blue */
+    background-color: #ffffff;
+}
+
+/* Interactive Elements */
+.field-group {
+    margin: 0 0 20px 0;
+    padding: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.field-group select {
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.selection-section {
+    border: 2px solid var(--highlight-color);
+    border-radius: 10px; /* Adjust as needed for rounded corners */
+}
+
+.select-picker {
+    width: 150%; /* Increase width by 1.5 times */
+}

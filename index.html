@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color and Texture Blend</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Paint Shop</h1>
+</header>
+
+<div class="content-wrapper">
+    <div class="section-container">
+        <div class="section-left">
+            <div class="selection-section">
+                <label for="colorPicker">Choose a Minwax color:</label>
+                <select id="colorPicker" class="field-group select-picker">
+                    <option value="rgb(148, 122, 75)">435 Oakwood (Oakwood Color)</option>
+                    <option value="rgb(110, 76, 38)">209 Natural</option>
+                    <option value="rgb(86, 57, 25)">210B Golden Oak</option>
+                    <option value="rgb(116, 66, 45)">211 Provincial</option>
+                    <option value="rgb(91, 61, 42)">230 Early American</option>
+                    <!-- Add more Minwax colors as needed -->
+                </select>
+
+                <label for="texturePicker">Choose a wood grain texture:</label>
+                <select id="texturePicker" class="field-group select-picker">
+                    <option value="textures/woodoak.jpg">Wood Oak</option>
+                    <option value="textures/woodcherry.jpg">Wood Cherry</option>
+                    <option value="textures/paintgrade.jpg">Paint Grade</option>
+                    <!-- Add more wood textures as needed -->
+                </select>
+            </div>
+        </div>
+
+        <div class="section-middle">
+            <canvas id="blendCanvas" class="standard-card door-preview" width="600" height="600"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    const colorPicker = document.getElementById('colorPicker');
+    const texturePicker = document.getElementById('texturePicker');
+    const blendCanvas = document.getElementById('blendCanvas');
+    const ctx = blendCanvas.getContext('2d');
+
+    colorPicker.addEventListener('change', blendTexture);
+    texturePicker.addEventListener('change', blendTexture);
+
+    function blendTexture() {
+        const selectedTexture = texturePicker.value;
+        const color = colorPicker.value;
+
+        console.log("Selected texture path:", selectedTexture);
+        console.log("Selected color:", color);
+
+        const img = new Image();
+        img.onload = function() {
+            console.log("Texture loaded successfully:", selectedTexture);
+            ctx.clearRect(0, 0, blendCanvas.width, blendCanvas.height);
+            ctx.drawImage(img, 0, 0, blendCanvas.width, blendCanvas.height);
+            console.log("Texture drawn on canvas");
+
+            // Use multiply blend mode for better blending
+            ctx.globalCompositeOperation = 'multiply';
+            ctx.fillStyle = color;
+            ctx.fillRect(0, 0, blendCanvas.width, blendCanvas.height);
+            console.log("Color applied to canvas using multiply blend mode");
+
+            ctx.globalCompositeOperation = 'source-over';
+        }
+        img.onerror = function() {
+            console.error("Failed to load texture:", selectedTexture);
+        }
+        img.src = selectedTexture;
+    }
+
+    // Initial rendering of the default selections
+    blendTexture();
+</script>
+
+</body>
+</html>

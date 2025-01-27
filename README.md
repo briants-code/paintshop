@@ -1,2 +1,2 @@
-# paintshop
-Paint Shop: Color and Texture Blender
+# ProjectPalette
+ProjectPalette: Color and Texture Blender
